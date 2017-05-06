@@ -1,4 +1,4 @@
-# SMART LOVE
+# STAR LOVE
 
 Star love is a wink to tinder using the api **[SWAPI](https://swapi.co/documentation)**.
 

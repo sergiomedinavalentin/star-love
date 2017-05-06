@@ -18,15 +18,16 @@
       <img (click)="goToUserDetails(user.userId)" src="{{'assets/img/people-' + user.userId + '.jpg'}}"/>
       <ion-card-content>
         <ion-card-title>
-          {{user.name}}, {{user.birth_year}}
+          <h1>{{user.name}}</h1>
+          <p>Birth year: {{user.birth_year}}</p>
         </ion-card-title>
 
         <div class="buttons">
           <button ion-button icon-only color="danger" (click)="dislikeUser(i)">
-            <ion-icon name="trash"></ion-icon>
+            <ion-icon name="thumbs-down"></ion-icon>
           </button>
           <button ion-button icon-only color="secondary" (click)="likeUser(i)">
-            <ion-icon name="heart"></ion-icon>
+            <ion-icon name="thumbs-up"></ion-icon>
           </button>
         </div>
       </ion-card-content>

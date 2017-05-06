@@ -1,0 +1,18 @@
+page-fav-list {
+	ion-content {
+		background: color($colors, dark) !important;
+
+		.list {
+			.item {
+				background: color($colors, dark) !important;
+				color: white;
+
+				ion-avatar {
+					img {
+						border: 2px solid color($colors, secondary);
+					}
+				}
+			}
+		}
+	}
+}

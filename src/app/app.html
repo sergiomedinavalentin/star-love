@@ -1,0 +1,68 @@
+<ion-menu [content]="content" color="dark" side="left">
+  <ion-content>
+    <ion-list class="list-menu">
+
+      <ion-item no-lines class="user-info" color="dark">
+        <ion-avatar item-left>
+          <img src="{{'./assets/img/' + profilePic}}">
+        </ion-avatar>
+        <h2>Lucas</h2>
+      </ion-item>
+
+      <button menuClose ion-item clear color="dark" no-lines *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-menu [content]="content" color="dark" side="right">
+  <ion-header>
+    <ion-navbar color="dark">  
+      <ion-title>Filter</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <div class="filter-buttons">
+      <button ion-button color="light" [ngClass]="{'active': selectedfilter === 'All'}" menuClose="right" (click)="filterAll()">All</button>
+      <button ion-button color="light" [ngClass]="{'active': selectedfilter === 'Films'}" (click)="chooseFilter('films')">Films</button>
+      <button ion-button color="light" [ngClass]="{'active': selectedfilter === 'Starships'}" (click)="chooseFilter('starships')">Starships</button>
+      <button ion-button color="light" [ngClass]="{'active': selectedfilter === 'Vehicles'}" (click)="chooseFilter('vehicles')">Vehicles</button>
+      <button ion-button color="light" [ngClass]="{'active': selectedfilter === 'Species'}" (click)="chooseFilter('species')">Species</button>
+      <button ion-button color="light" [ngClass]="{'active': selectedfilter === 'Planets'}" (click)="chooseFilter('planets')">Planets</button>
+    </div>
+
+    <div class="filter-options" *ngIf="selectedfilter && selectedfilter !== 'All'">
+      <ion-item class="range-filter" no-lines>
+        <ion-label>Birth year</ion-label>
+        <ion-range dualKnobs="true" [(ngModel)]="birthYearRange" min="0" max="1000" pin="true" color="secondary">
+          <ion-label range-left>0BBY</ion-label>
+          <ion-label range-right>1000BBY</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <ion-item class="select-option">
+        <ion-label>{{selectedfilter}}</ion-label>
+        <ion-select [(ngModel)]="selectedOption">
+          <ion-option *ngFor="let item of selectOptions" value="{{item.id}}">{{item.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <div class="filter-options-buttons">
+        <button ion-button color="secondary" (click)="save(selectedfilter)" icon-right menuClose="right">
+          Apply
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+        <button ion-button color="light" menuClose="right" (click)="cancel()" icon-right>
+          Cancel
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,104 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Profile</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="user-image">
+        <img src="{{'assets/img/' + imageSelected}}"/>
+    </div>
+    <div class="other-user-image">
+        <div class="image" tappable (click)="changeImage('lucas.jpg')" [hidden]="imageSelected === 'lucas.jpg'">
+            <img src="assets/img/lucas.jpg"/>
+        </div>
+        <div class="image" tappable (click)="changeImage('lucas2.jpg')" [hidden]="imageSelected === 'lucas2.jpg'">
+            <img src="assets/img/lucas2.jpg"/>
+        </div>
+        <div class="image" tappable (click)="changeImage('lucas3.jpg')" [hidden]="imageSelected === 'lucas3.jpg'">
+            <img src="assets/img/lucas3.jpg"/>
+        </div>
+    </div>
+    <ion-card>
+        <ion-card-header>
+            Personal Info
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <span class="key"><b>Name:</b></span>
+                <span>Lucas</span>
+            </ion-item>
+            <ion-item>
+                <span class="key"><b>Birth year:</b></span>
+                <span>1944</span>
+            </ion-item>
+            <ion-item>
+                <span class="key"><b>Gender:</b></span>
+                <span>Male</span>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            Appearance
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <span class="key"><b>Height:</b></span>
+                <span>168 cm</span>
+            </ion-item>
+            <ion-item>
+                <span class="key"><b>Mass:</b></span>
+                <span>90 kg</span>
+            </ion-item>
+            <ion-item>
+                <span class="key"><b>Hair color:</b></span>
+                <span>White</span>
+            </ion-item>
+            <ion-item>
+                <span class="key"><b>Eye color:</b></span>
+                <span>Brown</span>
+            </ion-item>
+            <ion-item>
+                <span class="key"><b>Skin color:</b></span>
+                <span>Fair</span>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            Species
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <span class="key"><b>Specie:</b></span>
+                <span>Human</span>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            Starships
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <span class="key"><b>Starship:</b></span>
+                <span>Executor</span>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            Vehicles
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <span class="key"><b>Vehicle:</b></span>
+                <span>Mosler MT900S</span>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

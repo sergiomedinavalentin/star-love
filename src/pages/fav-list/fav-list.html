@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Favorite People</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let user of people" (click)="goToUserDetails(user.userId)">
+            <ion-avatar item-left>
+                <img src="{{ 'assets/img/people-' + user.userId + '.jpg' }}">
+            </ion-avatar>
+
+            <h2>{{ user.name }}</h2>
+
+            <p>{{ user.birth_year }}, {{ user.gender }}</p>
+            <ion-icon item-right name="arrow-forward"></ion-icon>
+        </ion-item>
+    </ion-list>
+</ion-content>

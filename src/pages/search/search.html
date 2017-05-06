@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle="left">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Search</ion-title>
+    <button ion-button menuToggle="right" end>
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="stars"></div>
+
+  <div class="content-search">
+    <ion-card *ngFor="let user of people; let i = index" [ngClass]="{'swipe-right': user.hideRight === true, 'swipe-left': user.hideLeft === true}" #card (swipe)="swipeEvent($event.direction, i)">
+      <img (click)="goToUserDetails(user.userId)" src="{{'assets/img/people-' + user.userId + '.jpg'}}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{user.name}}, {{user.birth_year}}
+        </ion-card-title>
+
+        <div class="buttons">
+          <button ion-button icon-only color="danger" (click)="dislikeUser(i)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+          <button ion-button icon-only color="secondary" (click)="likeUser(i)">
+            <ion-icon name="heart"></ion-icon>
+          </button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="reload-nofav" *ngIf="people.length > 0">
+      <button ion-button icon-only color="default" (click)="reload()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <span class="note">Reload people discarded</span>
+    </div>
+  </div>
+  
+</ion-content>

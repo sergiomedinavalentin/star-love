@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle="left">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>User Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div class="user-image">
+		<img src="{{'assets/img/people-' + userId + '.jpg'}}"/>
+	</div>
+	<ion-card>
+		<ion-card-header>
+			Personal Info
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<span class="key"><b>Name:</b></span>
+				<span>{{user.name}}</span>
+			</ion-item>
+			<ion-item>
+				<span class="key"><b>Birth year:</b></span>
+				<span>{{user.birth_year}}</span>
+			</ion-item>
+			<ion-item>
+				<span class="key"><b>Gender:</b></span>
+				<span>{{user.gender}}</span>
+			</ion-item>
+		</ion-card-content>
+    </ion-card>
+    <ion-card>
+		<ion-card-header>
+			Appearance
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item>
+				<span class="key"><b>Height:</b></span>
+				<span>{{user.height}} cm</span>
+			</ion-item>
+			<ion-item>
+				<span class="key"><b>Mass:</b></span>
+				<span>{{user.mass}} kg</span>
+			</ion-item>
+			<ion-item>
+				<span class="key"><b>Hair color:</b></span>
+				<span>{{user.hair_color}}</span>
+			</ion-item>
+			<ion-item>
+				<span class="key"><b>Eye color:</b></span>
+				<span>{{user.eye_color}}</span>
+			</ion-item>
+			<ion-item>
+				<span class="key"><b>Skin color:</b></span>
+				<span>{{user.skin_color}}</span>
+			</ion-item>
+
+		</ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="films.length > 0">
+		<ion-card-header>
+			Films
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item *ngFor="let film of films">
+				<span class="key"><b>Title:</b></span>
+				<span>{{film}}</span>
+			</ion-item>
+		</ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="species.length > 0">
+		<ion-card-header>
+			Species
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item *ngFor="let specie of species">
+				<span class="key"><b>Specie:</b></span>
+				<span>{{specie}}</span>
+			</ion-item>
+		</ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="starships.length > 0">
+		<ion-card-header>
+			Starships
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item *ngFor="let starship of starships">
+				<span class="key"><b>Starship:</b></span>
+				<span>{{starship}}</span>
+			</ion-item>
+		</ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="vehicles.length > 0">
+		<ion-card-header>
+			Vehicles
+		</ion-card-header>
+		<ion-card-content>
+			<ion-item *ngFor="let vehicle of vehicles">
+				<span class="key"><b>Vehicle:</b></span>
+				<span>{{vehicle}}</span>
+			</ion-item>
+		</ion-card-content>
+    </ion-card>
+</ion-content>

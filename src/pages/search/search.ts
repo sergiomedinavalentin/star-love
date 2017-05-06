@@ -20,6 +20,9 @@ export class SearchPage {
 
 	db: LocalForage;
 
+  userToShowIndex: number = 0;
+  showReload: boolean = false;
+
   constructor(
   	private backendService: BackendService,
   	private loadingCtrl: LoadingController,
@@ -41,6 +44,9 @@ export class SearchPage {
   }
 
   async getContent() {
+    this.userToShowIndex = 0;
+    this.people = [];
+
   	let loader = this.loadingCtrl.create({
       content: 'Please wait...',
       spinner: 'bubbles'
@@ -107,6 +113,12 @@ export class SearchPage {
 	  	});
 	  }
 
+    if (this.people.length > 0) {
+      this.showReload = false;
+    } else {
+      this.showReload = true;
+    }
+
   	loader.dismiss();
 
   }
@@ -129,12 +141,38 @@ export class SearchPage {
   	this.people[index].hideRight = true;
   	this.userFav.push(this.people[index].url.split('/')[5]);
   	this.db.setItem('_favorites', this.userFav);
+
+    if (this.userToShowIndex < (this.people.length - 1)) {
+      setTimeout(() => {
+        let image: any = document.getElementById('user-img');
+        image.src = 'assets/img/people-' + this.people[this.userToShowIndex + 1].userId + '.jpg';
+      }, 500);
+
+      setTimeout(() => {
+        this.userToShowIndex++;
+      }, 750);
+    } else {
+      this.showReload = true;
+    }
   }
 
   dislikeUser(index) {
   	this.people[index].hideLeft = true;
   	this.userNoFav.push(this.people[index].url.split('/')[5]);
   	this.db.setItem('_nofavorites', this.userNoFav);
+
+    if (this.userToShowIndex < (this.people.length - 1)) {
+      setTimeout(() => {
+        let image: any = document.getElementById('user-img');
+        image.src = 'assets/img/people-' + this.people[this.userToShowIndex + 1].userId + '.jpg';
+      }, 500);
+
+      setTimeout(() => {
+        this.userToShowIndex++;
+      }, 750);
+    } else {
+      this.showReload = true;
+    }
   }
 
   reload() {

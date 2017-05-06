@@ -14,26 +14,26 @@
   <div class="stars"></div>
 
   <div class="content-search">
-    <ion-card *ngFor="let user of people; let i = index" [ngClass]="{'swipe-right': user.hideRight === true, 'swipe-left': user.hideLeft === true}" #card (swipe)="swipeEvent($event.direction, i)">
-      <img (click)="goToUserDetails(user.userId)" src="{{'assets/img/people-' + user.userId + '.jpg'}}"/>
+    <ion-card *ngIf="people.length > 0" [ngClass]="{'swipe-right': people[userToShowIndex].hideRight === true, 'swipe-left': people[userToShowIndex].hideLeft === true}" (swipe)="swipeEvent($event.direction, userToShowIndex)">
+      <img id="user-img" (click)="goToUserDetails(people[userToShowIndex].userId)" src="{{'assets/img/people-' + people[userToShowIndex].userId + '.jpg'}}"/>
       <ion-card-content>
         <ion-card-title>
-          <h1>{{user.name}}</h1>
-          <p>Birth year: {{user.birth_year}}</p>
+          <h1>{{people[userToShowIndex].name}}</h1>
+          <p>Birth year: {{people[userToShowIndex].birth_year}}</p>
         </ion-card-title>
 
         <div class="buttons">
-          <button ion-button icon-only color="danger" (click)="dislikeUser(i)">
+          <button ion-button icon-only color="danger" (click)="dislikeUser(userToShowIndex)">
             <ion-icon name="thumbs-down"></ion-icon>
           </button>
-          <button ion-button icon-only color="secondary" (click)="likeUser(i)">
+          <button ion-button icon-only color="secondary" (click)="likeUser(userToShowIndex)">
             <ion-icon name="thumbs-up"></ion-icon>
           </button>
         </div>
       </ion-card-content>
     </ion-card>
 
-    <div class="reload-nofav" *ngIf="people.length > 0">
+    <div class="reload-nofav" *ngIf="showReload">
       <button ion-button icon-only color="default" (click)="reload()">
         <ion-icon name="refresh"></ion-icon>
       </button>

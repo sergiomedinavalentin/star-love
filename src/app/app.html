@@ -3,7 +3,7 @@
     <ion-list class="list-menu">
 
       <ion-item no-lines class="user-info" color="dark">
-        <ion-avatar item-left>
+        <ion-avatar item-left (click)="openPage(pages[0])" menuClose>
           <img src="{{'./assets/img/' + profilePic}}">
         </ion-avatar>
         <h2>Lucas</h2>
